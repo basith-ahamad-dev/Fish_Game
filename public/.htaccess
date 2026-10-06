@@ -1,0 +1,18 @@
+Options -Indexes
+
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+    # Serve existing files (assets, uploads) directly
+    RewriteCond %{REQUEST_FILENAME} -f
+    RewriteRule ^ - [L]
+
+    # Everything else goes through the front controller
+    RewriteRule ^ index.php [L]
+</IfModule>
+
+<IfModule mod_headers.c>
+    <FilesMatch "\.(css|js|svg|png|jpg|jpeg|webp|gif|woff2)$">
+        Header set Cache-Control "public, max-age=604800"
+    </FilesMatch>
+</IfModule>
