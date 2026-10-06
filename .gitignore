@@ -1,0 +1,15 @@
+# Local configuration (contains database credentials)
+.env
+
+# Runtime files
+storage/logs/*
+!storage/logs/.gitkeep
+!storage/logs/.htaccess
+public/uploads/avatars/*
+!public/uploads/avatars/.htaccess
+
+# Editor / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

@@ -1,0 +1,12 @@
+# Fallback for hosts where the document root cannot point at /public (e.g. shared cPanel).
+# Every request is sent into /public, so app/, config/, database/, storage/ and .env stay unreachable.
+Options -Indexes
+
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteRule ^(.*)$ public/$1 [L]
+</IfModule>
+
+<FilesMatch "^\.env|\.(sql|md|log)$">
+    Require all denied
+</FilesMatch>
